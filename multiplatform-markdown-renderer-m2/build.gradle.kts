@@ -7,6 +7,23 @@ plugins {
 
 android {
     namespace = "com.mikepenz.markdown.m2"
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
+    }
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "io.jitpack"
+            artifactId = "library"
+            version = "1.0"
+            from(components["release"])
+        }
+    }
 }
 
 dependencies {
